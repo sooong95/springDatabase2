@@ -11,29 +11,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Transactional
 @SpringBootTest
 class ItemRepositoryTest {
 
     @Autowired
     ItemRepository itemRepository;
 
-    @Autowired
+    /*@Autowired
     PlatformTransactionManager transactionManager;
 
     @Autowired
-    TransactionStatus status;
+    TransactionStatus status;*/
 
-    @BeforeEach
+    /*@BeforeEach
     void beforeEach() {
         // 트랙잭션 시작
         status = transactionManager.getTransaction(new DefaultTransactionDefinition());
-    }
+    }*/
 
     @AfterEach
     void afterEach() {
@@ -43,7 +45,7 @@ class ItemRepositoryTest {
         }
 
         // 트랙잭션 롤백
-        transactionManager.rollback(status);
+        //transactionManager.rollback(status);
     }
 
     @Test
